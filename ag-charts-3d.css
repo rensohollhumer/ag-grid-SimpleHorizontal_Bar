@@ -1,0 +1,101 @@
+/* ag-charts-3d.css */
+
+/* Main chart container styling */
+.ag-chart-wrapper {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  padding: 20px;
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Give the main canvas element a subtle rotation for 3D effect */
+.ag-chart-canvas {
+  transform: rotateX(5deg);
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+}
+
+/* 3D styling for the Saw Station bars */
+.ag-chart-canvas [data-series-name="Saw Station"] rect {
+  fill: url(#sawGradient) !important;
+  filter: drop-shadow(3px 5px 2px rgba(0, 0, 50, 0.3));
+  stroke: #2a4d8f !important;
+  stroke-width: 1px;
+  transition: all 0.3s ease;
+}
+
+/* 3D styling for the Weld Station bars */
+.ag-chart-canvas [data-series-name="Weld Station"] rect {
+  fill: url(#weldGradient) !important;
+  filter: drop-shadow(3px 5px 2px rgba(50, 20, 0, 0.3));
+  stroke: #a04000 !important;
+  stroke-width: 1px;
+  transition: all 0.3s ease;
+}
+
+/* 3D styling for the Paint Station bars */
+.ag-chart-canvas [data-series-name="Paint Station"] rect {
+  fill: url(#paintGradient) !important;
+  filter: drop-shadow(3px 5px 2px rgba(30, 30, 30, 0.3));
+  stroke: #4a4a4a !important;
+  stroke-width: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effects to enhance 3D appearance */
+.ag-chart-canvas rect:hover {
+  filter: drop-shadow(4px 6px 3px rgba(0, 0, 0, 0.4));
+  transform: translateZ(5px);
+}
+
+/* SVG Definitions for gradients - will be injected via JavaScript */
+/* This is needed because AG Charts uses canvas, not SVG directly */
+
+/* Custom tooltip styling */
+.ag-chart-tooltip {
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(to bottom, #ffffff, #f5f5f5) !important;
+  padding: 10px !important;
+  font-weight: bold !important;
+}
+
+/* 3D title effect */
+.ag-chart-title,
+.ag-chart-subtitle {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D effect for legend */
+.ag-chart-legend-item {
+  transition: all 0.2s ease;
+}
+
+.ag-chart-legend-item:hover {
+  transform: scale(1.05) translateZ(5px);
+}
+
+/* Animation for chart loading */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ag-chart-wrapper {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Make axis lines more visible */
+.ag-chart-canvas line {
+  stroke-width: 1.5px !important;
+}
